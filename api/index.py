@@ -1,16 +1,9 @@
-from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, Query
+from analyzer.core import analyze_symbol
 
 app = FastAPI()
 
 @app.get("/analyze")
-async def analyze(symbol: str):
-    # Место для реального анализа — пока просто мок
-    return JSONResponse(content={
-        "symbol": symbol,
-        "signal": "Лонг",
-        "entry": 84653.01,
-        "stop": 82959.95,
-        "take": 86346.07,
-        "argument": "Обнаружена поддержка"
-    })
+def analyze(symbol: str = Query(..., example="BTC/USDT")):
+    result = analyze_symbol(symbol)
+    return result

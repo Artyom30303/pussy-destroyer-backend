@@ -1,6 +1,9 @@
-
 {
   "version": 2,
-  "builds": [{ "src": "api/analyze.py", "use": "@vercel/python" }],
-  "routes": [{ "src": "/analyze", "dest": "api/analyze.py" }]
+  "builds": [
+    { "src": "api/index.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/analyze", "dest": "api/index.py" }
+  ]
 }

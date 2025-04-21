@@ -1,8 +1,9 @@
-// api/analyze.js
-
 import fetch from 'node-fetch';
 
 export default async function handler(req, res) {
+  // 💥 разрешаем запросы с любых доменов
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
   const { symbol = "BTCUSDT" } = req.query;
 
   try {
